@@ -1,0 +1,11 @@
+{% extends 'myapp/base.html' %} {% block content %}
+<h2>Activity Logs</h2>
+<ul>
+  {% for log in activity_logs %}
+  <li>{{ log.timestamp }} - {{ log.user }} - {{ log.action }}</li>
+  <!-- Display any additional information if needed -->
+  {% if log.additional_info %}
+  <li>{{ log.additional_info }}</li>
+  {% endif %} {% endfor %}
+</ul>
+{% endblock %}

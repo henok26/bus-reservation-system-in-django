@@ -1,0 +1,30 @@
+{% load static %}
+
+<style>
+  .user-info img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+</style>
+
+<div class="user-info">
+  {% if request.user.profile.logo %}
+  <img
+    src="{{ request.user.profile.logo.url }}"
+    alt="Profile Picture"
+    class="user-image"
+  />
+  {% else %}
+  <img
+    src="{% static 'myapp/pro.jpg' %}"
+    alt="Default Profile Picture"
+    class="user-image"
+  />
+  {% endif %}
+  <span>{{ request.user.username }}</span>
+  <div class="sign-out-menu">
+    <a href="{% url 'myapp:signout' %}">Sign Out</a>
+  </div>
+</div>
